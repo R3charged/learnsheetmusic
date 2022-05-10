@@ -13,7 +13,6 @@ export default class Sheet extends React.Component {
         }
     }
     handleHover(i) {
-        console.log(this.props.notePos);
         this.setState({
             pos: i
         })
@@ -37,19 +36,8 @@ export default class Sheet extends React.Component {
     }
 
     render() {
-        let t;
-        console.log("Sheet rendered " + this.props.notePos)
-        if (this.props.textBox) {
-            let handleKeyPress = (event) => {
-                if (event.key === 'Enter') {
-                    this.props.handleClick(event.target.value);
-                }
-            };
-            t = <input type="text" name="note" onKeyPress={(ev)=>handleKeyPress(ev)}/>
-        }
         return (
             <div>
-                {this.state.pos}
                 {this.renderBand(26, false)}
                 {this.renderBand(25, false)}
                 {this.renderBand(24, false)}
@@ -79,7 +67,6 @@ export default class Sheet extends React.Component {
                 {this.renderBand(2, false)}
                 {this.renderBand(1, false)}
                 {this.renderBand(0, false)}
-                {t}
             </div>
         );
     }

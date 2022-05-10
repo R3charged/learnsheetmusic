@@ -34,6 +34,11 @@ export default class Game extends React.Component {
 
 
     render() {
+        let handleKeyPress = (event) => {
+            if (event.key === 'Enter') {
+                this.submitAnswer(event.target.value);
+            }
+        };
         console.log("render executed")
         let mode = this.state.mode ?
             <div class="sheet">
@@ -41,11 +46,12 @@ export default class Game extends React.Component {
                 <Sheet interact={true} handleClick={(i) => this.submitAnswer(right[i])}/>
             </div> :
             <div class="sheet">
-                <Sheet interact={false} textBox={true} notePos={this.state.answer} handleClick={(i) => this.submitAnswer(i)}/>
-
+                <Sheet interact={false} notePos={this.state.answer}/>
+                <input type="text" name="note" onKeyPress={(ev)=>handleKeyPress(ev)}/>
             </div>;
         return (
             <div>
+                {right[this.state.answer]}
                 score: {this.state.score}
                 {mode}
             </div>
