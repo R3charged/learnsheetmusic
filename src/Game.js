@@ -15,7 +15,8 @@ export default class Game extends React.Component {
     }
 
     randomNote() {
-        return Math.floor(Math.random() * 27);
+        let i = Math.floor(Math.random() * 27);
+        return i != this.state.answer ? i : this.randomNote();
     }
 
     submitAnswer(ans) {
