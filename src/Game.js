@@ -9,21 +9,21 @@ export default class Game extends React.Component {
         super();
         this.state = {
             score: 0,
-            answer: this.randomNote(),
+            answer: this.randomNote(-1),
             mode: false
         }
     }
 
-    randomNote() {
+    randomNote(j) {
         let i = Math.floor(Math.random() * 27);
-        return i != this.state.answer ? i : this.randomNote();
+        return  i != j ? i : this.randomNote();
     }
 
     submitAnswer(ans) {
         if (ans == right[this.state.answer]) {
             this.setState({
                 score: this.state.score+1,
-                answer: this.randomNote()
+                answer: this.randomNote(this.state.answer)
             })
             console.log("state set.")
         } else {
