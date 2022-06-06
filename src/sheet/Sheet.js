@@ -21,14 +21,14 @@ export default class Sheet extends React.Component {
     renderBand(i, hasLine) {
         let oh, oc = null;
         if (this.props.interact) {
-            oh = ()=>{this.handleHover(i)};
+            oh = (i)=>{this.handleHover(i)};
             oc = (j)=>{this.props.handleClick(j)};
         }
         return (
             <Band
                 note={i}
                 drawLine={hasLine}
-                pos={this.props.notePos}
+                pos={this.props.interact ? this.state.pos : this.props.notePos}
                 onHover={oh}
                 onClick={oc}
             />
@@ -38,6 +38,7 @@ export default class Sheet extends React.Component {
     render() {
         return (
             <div>
+                {this.props.isGClef ? <img src={gclef} className="gClef"></img> : <img src={fclef} className="fClef"/>}
                 {this.renderBand(26, false)}
                 {this.renderBand(25, false)}
                 {this.renderBand(24, false)}
@@ -98,7 +99,8 @@ class Band extends React.Component {
             }
         }
         return (
-            <div className="band" onClick={()=>this.props.onClick(this.props.pos)} onMouseOver={this.props.onHover}>
+            <div className="band" onClick={()=>this.props.onClick(this.props.pos)}
+                 onMouseOver={(event)=>{this.props.onHover(this.props.note)}}>
                 {l}
                 {n}
             </div>

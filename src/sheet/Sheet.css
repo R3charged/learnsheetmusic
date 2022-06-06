@@ -30,7 +30,6 @@
     position: relative;
     top: -82px;
     left: auto;
-    pointer-events: none;
 }
 .upperNote {
     width: 37px;
@@ -39,6 +38,23 @@
     position: relative;
     top: -7px;
     left: auto;
-    pointer-events: none;
 
+}
+
+.gClef {
+    position: absolute;
+    width: 67px;
+    height: 182px;
+    left: 1%;
+    right: 88.04%;
+    top: 26.78%;
+    bottom: 23.07%;
+}
+
+.fClef {
+    position: absolute;
+    left: 0%;
+    right: 83.21%;
+    top: 33.39%;
+    bottom: 38.83%;
 }
